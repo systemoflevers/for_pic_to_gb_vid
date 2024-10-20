@@ -102,25 +102,25 @@ async function doStuff() {
 
   const contrastRenderer = (r) => renderImage(image, gbSizedCanvas, ctx, {contrast: 3 * r})
   const a = document.createElement('a');
-  const startTime = performance.now();
-  const duration = 1000;
-  while (true) {
-    const now = await animationFramePromise();
-    const delta = now - startTime;
-    if (delta > duration) return;
-    contrastRenderer(easeInOutSine(delta / duration));
-  }
-  //for (let i = 0; i < 100; ++i) {
-  //  contrastRenderer(easeInSine(i / 100));
-  //  //const now = await animationFramePromise();
-//
-  //  const dataUrl = canvas.toDataURL();
-  //  let fileID = '0000000' + i
-  //  fileID = fileID.substring(fileID.length - 8);
-  //  a.download = `frame${fileID}.png`;
-  //  a.href = dataUrl;
-  //  a.click();
+  //const startTime = performance.now();
+  //const duration = 1000;
+  //while (true) {
+  //  const now = await animationFramePromise();
+  //  const delta = now - startTime;
+  //  if (delta > duration) return;
+  //  contrastRenderer(easeInOutSine(delta / duration));
   //}
+  for (let i = 0; i < 100; ++i) {
+    contrastRenderer(easeInSine(i / 100));
+    //const now = await animationFramePromise();
+
+    const dataUrl = canvas.toDataURL();
+    let fileID = '0000000' + i
+    fileID = fileID.substring(fileID.length - 8);
+    a.download = `frame${fileID}.png`;
+    a.href = dataUrl;
+    a.click();
+  }
 }
 
 doStuff();
